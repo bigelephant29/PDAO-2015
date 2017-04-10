@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>2015 NTUIM PDAO</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="#dddddd">
+					<h1>2015 NTUIM PDAO</h1>
+					<h3>題目講解</h3>
+					<p>
+                        <small>
+                            By Bigelephant29
+                        </small>
+					</p>
+				</section>
+
+				<section>
+					<h2>致謝</h2>
+					<p>
+                        music960633<br>
+                        magrady24<br>
+                        arbuztw<br>
+                        c2251393<br>
+                        eddy1021<br>
+                        tzupengwang<br>
+                        rilak<br>
+                        和認真作答的你們！
+					</p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>A 癢癢DER錯錯DER</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>給一個正整數 $N$，問 $N!$ 有幾個尾 $0$。</p>
+                    </section>
+                    <section>
+                        <h2>$N!$ ?</h2>
+                    </section>
+                    <section>
+                        <p>$N! = 1\times 2\times 3\times{....}\times{N}$</p>
+                        <p class="fragment">每個尾 $0$ 都是由一組 $2\times{5}$ 構成的。</p>
+                        <p class="fragment">不論 $N$ 多大，$5$ 的數量都顯然少於 $2$的數量。</p>
+                        <p class="fragment">只要關心 $5$ 的數量，怎麼算？</p>
+                    </section>
+                    <section>
+                        <p>當 $N=5$，會出現第 $1$ 個 $5^{1}$。</p>
+                        <p class="fragment">當 $N=10$，會出現第 $2$ 個 $5^{1}$。</p>
+                        <p class="fragment">當 $N=25$，會出現第 $5$ 個 $5^{1}$、第 $1$ 個 $5^{2}$。</p>
+                        <p class="fragment">$N!$ 總共會有 $\lfloor \frac{N}{5}\rfloor +\lfloor\frac{N}{5^2}\rfloor+ \lfloor\frac{N}{5^3}\rfloor\ +\ ....$ 個 $5$。</p>
+                    </section>
+                    <section>
+                        <h2>解法</h2>
+                        <p>每次把$\lfloor \frac{N}{5}\rfloor$ 加起來，加完把 $N$ 除以 $5$，直到 $N$ 變成 $0$。</p>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：癢。</p>
+                    </section>
+				</section>
+
+                <section>
+					<section>
+						<h2>B 都更</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>給兩個擺好好的矩形，問兩矩形有沒有交疊。</p>
+                    </section>
+                    <section>
+                        <p>方法很多，硬做是其一。</p>
+                        <p class="fragment">從矩形的四個角下手聽起來還不錯（？</p>
+                    </section>
+                    <section>
+                        <p>取其中一個矩形，問四個角是否都在另一個矩形裡面？</p>
+                        <p class="fragment">來傳傳看...</p>
+                    </section>
+                    <section>
+                        <h1><font color="red">No - Wrong Answer</font></h1>
+                    </section>
+                    <section>
+                        <img src="pic/B_1.png"/>
+                        <p class="fragment">把另一個矩形也抓來判一次！傳！</p>
+                    </section>
+                    <section>
+                        <h1><font color="red">No - Wrong Answer</font></h1>
+                    </section>
+                    <section>
+                        <img src="pic/B_2.png"/>
+                        <p>Special Case</p>
+                    </section>
+                    <section>
+                        <h1><font color="red">No - Wrong Answer</font></h1>
+                    </section>
+                    <section>
+                        <p>兩個矩形要交換再判一次。</p>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：小心處理十個 Case。</p>
+                    </section>
+                    <section>
+                        <h1>補充</h1>
+                        <p>有另一派做法非常厲害</p>
+                    </section>
+                    <section>
+                        <h2>法二</h2>
+                        <p>兩矩形左界較大者 $\le$ 右界較小者</p>
+                        <p>兩矩形下界較大者 $\le$ 上界較小者</p>
+                        <p>都成立就有交疊</p>
+                    </section>
+                    <section>
+                        <h1>證明</h1>
+                    </section>
+                    <section>
+                        <h2>半平面交</h2>
+                        <p>一個不等式可以將平面切成兩半</p>
+                    </section>
+                    <section>
+                        <p>一個矩形可以看成四個不等式的半平面交</p>
+                        <p class="fragment">兩個矩形的交疊就看成八個不等式的半平面交</p>
+                        <p class="fragment">其中有四個不等式可以被捨棄</p>
+                        <p class="fragment">捨棄左界小者、右界大者、下界小者、上界大者</p>
+                    </section>
+				</section>
+
+                <section>
+					<section>
+						<h2>C 回回文</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>給一個字串，問它是否為回回文。</p>
+                        <small>（回回文定義請去看題本）</small>
+                    </section>
+                    <section>
+                        <p>就...遞迴（？</p>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：遞迴。</p>
+                    </section>
+                    <section>
+                        <p>解法真的就這麼簡單，題目一臉要你遞迴的樣子。</p>
+                        <p class="fragment">時間複雜度是？</p>
+                        <p class="fragment">$O(N\log{N})$？</p>
+                        <p class="fragment">$N$ 如果超過 $10^6$，或甚至 $10^7$ 怎麼辦？</p>
+                    </section>
+                    <section>
+                        <p>根據定義，你會發現，回回文會對稱。</p>
+                        <p class="fragment">根據對稱的好性質，你會發現遞迴只要遞迴一邊。</p>
+                        <p class="fragment">$N + \frac{N}{2} + \frac{N}{4}\ +\ ..... \leq 2N = O(N)$</p>
+                    </section>
+				</section>
+
+                <section>
+					<section>
+						<h2>D 品品與火柴</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p class="fragment">用N根火柴棒湊出最大跟最小的數字</p>
+                    </section>
+                    <section>
+                        <h2>最大的數字</h2>
+                        <p class="fragment">位數要最多!!!</p>
+                        <p class="fragment">單一數字使用的火柴棒要最少</p>
+                        <p class="fragment">全部填1，只用兩根火柴棒</p>
+                    </section>
+                    <section>
+                        <h2>特例QAQ</h2>
+                        <p class="fragment">如果N為偶數世界很美好</p>
+                        <p class="fragment">111...11</p>
+                        <p class="fragment">如果N為奇數會多一根</p>
+                        <p class="fragment">711...11</p>
+                    </section>
+                    <section>
+                        <h2>最小的數字</h2>
+                        <p class="fragment">位數要最少</p>
+                        <p class="fragment">單一數字使用的火柴棒要最多</p>
+                        <p class="fragment">全部填8，七根火柴棒!!!</p>
+                    </section>
+                    <section>
+                        <h2>特例 N<=7</h2>
+                        <p class="fragment"> (N==1) puts("-1"); </p>
+                        <p class="fragment"> (N==2) puts("1"); </p>
+                        <p class="fragment"> (N==3) puts("7"); </p>
+                        <p class="fragment"> (N==4) puts("4"); </p>
+                        <p class="fragment"> (N==5) puts("2"); </p>
+                        <p class="fragment"> (N==6) puts("0"); </p>
+                        <p class="fragment"> (N==7) puts("8"); </p>
+                    </section>
+                    <section>
+                        <h2>特例 N%7!=0</h2>
+                        <p class="fragment">分給8之後有多的火柴棒</p>
+                        <p class="fragment">多的火柴棒放在最前面的地方</p>
+                        <p class="fragment">if(N%7==2) printf("18");</p>
+                        <p class="fragment">if(N%7==5) printf("28");</p>
+                        <p class="fragment">if(N%7==6) printf("68");</p>
+                        <p class="fragment">...世界有這麼美好嗎?</p>
+                    </section>
+                    <section>
+                        <h2>特例 N%7!=0</h2>
+                        <p class="fragment">if(N%7==4) printf("48")</p>
+                        <p class="fragment">but...</p>
+                        <p class="fragment">20 < 48</p>
+                        <p class="fragment">來算特例囉G_G~ </p>
+                    </section>
+                    <section>
+                        <h2>特例 N%7!=0</h2>
+                        <p class="fragment">if(N%7==1) printf("10");</p>
+                        <p class="fragment">if(N%7==2) printf("18");</p>
+                        <p class="fragment">if(N%7==3) printf("22");</p>
+                        <p class="fragment">if(N%7==4) printf("20");</p>
+                        <p class="fragment">if(N%7==5) printf("28");</p>
+                        <p class="fragment">if(N%7==6) printf("68");</p>
+                    </section>
+                    <section>
+                        <h2>特例</h2>
+                        <p class="fragment"> if(N%7==4) printf("20");</p>
+                        <p class="fragment"> but 200 < 228... </p>
+                        <p class="fragment"> 都判了這麼多，再多判一個就好</p>
+                        <p class="fragment"> if(N==10) printf("20"); </p>
+                        <p class="fragment"> if(N%7==4 && N>=17) printf("228"); </p>
+                    </section> 
+                    <section>
+                        <p class="fragment">避免漏Case的方法?</p>
+                        <p class="fragment">人工列舉2根~21根火柴的Case...</p>
+                    </section>                   
+				</section>
+
+                <section>
+					<section>
+						<h2>E ntu_pikachu</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>給 $N$ 個線段，問與所有線段總距離最近的點座標。</p>
+                        <small>（距離定義請去看題本）</small>
+                    </section>
+                    <section>
+                        <h2>大膽猜測，胡亂上傳</h2>
+                        <p>輸入總共 $2N$ 個座標，<br>從裡面挑一個總距離最近的當答案。</p>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：無條件捨去什麼的都是騙人的。</p>
+                        <p class="fragment">所以我說，那個證明呢？</p>
+                    </section>
+                    <section>
+                        <h2>考慮另一道題目</h2>
+                        <p>給 $N$ 個點，問與這些點總距離最小的點座標。</p>
+                    </section>
+                    <section>
+                        <p>先猜一個在最左邊的點。</p>
+                        <p class="fragment">將座標往右調整，每次總距離都會變近 $N$ 單位。</p>
+                        <p class="fragment">假設我的左邊有 $L$ 個點、右邊有 $R$ 個點，<br>
+                                            則我往右移動一單位，距離減少 $R-L$ 單位。</p>
+                    </section>
+                    <section>
+                        <p>平衡點？</p>
+                        <h2 class="fragment">中位數！</h1>
+                        <p class="fragment">中位數的左右邊人數一樣多，這時會平衡！</p>
+                    </section>
+                    <section>
+                        <p>這題也可以用中位數嗎？</p>
+                        <p class="fragment">觀察一個點 $x$ 到線段 $[L,R]$ 的距離。</p>
+                        <p class="fragment">$x$ 到 $[L,R]$ 的距離恰為 $x$ 到兩端點距離和的一半！</p>
+                        <p class="fragment">故兩命題等價，得證！</p>
+                        <p class="fragment">出來吧，中位數！</p>
+                        <p class="fragment">時間複雜度 $O(N\log{N})$。</p>
+                    </section>
+				</section>
+
+                <section>
+					<section>
+						<h2>F 樹論之黑邊與白邊</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>給一棵樹和 $M$ 次操作，一開始樹上的邊都是白色的。</p>
+                        <p>每次操作把樹上兩點間的所有邊顏色黑白互換，<br>問最後幾條黑邊、幾條白邊？</p>
+                    </section>
+                     <section>
+                        <h2>照著題目意思建樹、模擬？</h2>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：這範圍出得也太小了...。</p>
+                        <p class="fragment">如果 $N = M = 100000$？</p>
+                        <p class="fragment">需要一個優美的做法？</p>
+                    </section>
+                    <section>
+                        <h1>定義名詞</h1>
+                    </section>
+                    <section>
+                        <h1>LCA</h1>
+                        <p>Longest Common Ancestor</p>
+                        <p>最近公共祖先</p>
+                        <p>一棵樹上，兩個點的共同祖先中深度最深者。</p>
+                    </section>
+                    <section>
+                        <h2>如何求樹上兩點的 LCA？</h2>
+                    </section>
+                    <section>
+                        <h2>法一：在線 LCA</h2>
+                        <p class="fragment">DP 預處理每個人第 $2^k$ 個祖先是誰</p>
+                        <p class="fragment">將兩點抬到同高度、向上倍增 + 二分搜尋</p>
+                    </section>
+                    <section>
+                        <h2>法二：離線 LCA</h2>
+                        <p class="fragment">樹壓平把樹狀結構壓成序列結構</p>
+                        <p class="fragment">在序列上套 RMQ 做查詢</p>
+                    </section>
+                    <section>
+                        <h1>回到原題</h1>
+                        <p>當我要做 $a$ 到 $b$ 的黑白互換，我可以...</p>
+                    </section>
+                    <section>
+                        <p>先將 $a$ 到根黑白互換，</p>
+                        <p class="fragment">再將 $LCA(a,b)$ 到根黑白互換，</p>
+                        <p class="fragment">接下來將 $b$ 到根黑白互換，</p>
+                        <p class="fragment">再將 $LCA(a,b)$ 到根黑白互換。</p>
+                    </section>
+                    <section>
+                        <p>只要將 $a$ 到根及 $b$ 到根各黑白互換一次。</p>
+                        <p>連 LCA 都不用求了。</p>
+                    </section>
+                    <section>
+                        <p>實作上只要記錄每個點到根互換了幾次，</p>
+                        <p class="fragment">最後再 DFS 一次就行了！</p>
+                        <p class="fragment">時間複雜度 $O(N)$。</p>
+                        <small class="fragment">Code 大概 $30$ 行而已....</small>
+                    </section>
+                    <section>
+                        <h2>如果今天題目要求 $K$ 個不同顏色？</h2>
+                        <p class="fragment">點 $a$ 和 $b$ 各 $+1$，$LCA(a,b)$ 則是 $+(K-2)$。</p>
+                    </section>
+				</section>
+                <section>
+					<section>
+						<h2>G 有種都來住卡特神</h2>
+					</section>
+                    <section>
+                        <h2>前情提要</h2>
+                        <p>其實這本來是一道難到極致的題目，被閹割了。</p>
+                    </section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>卡特神在原點，每次可以往八方位走。</p>
+                        <p>很多岩漿，每次往九宮格擴散。</p>
+                        <p>問卡特神可以活多久？</p>
+                    </section>
+                    <section>
+                        <p>觀察一下會發現，</p>
+                        <p>在每個時間點，卡特神和岩漿都是正方形。</p>
+                        <p class="fragment">問題：卡特神何時被正方形們完全覆蓋？</p>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：照著寫應該就會過了。</p>
+                        <p class="fragment">正方形要一圈圈擴展比較快。</p>
+                    </section>
+                    <section>
+                        <h2>討論一：二分答案</h2>
+                        <p>一個決策問題：卡特神在時間 $t$ 是否存活？</p>
+                        <p class="fragment">這個問題有單調性，所以可以二分搜。</p>
+                    </section>
+                    <section>
+                        <h2>討論二：二維平面矩形覆蓋</h2>
+                        <p class="fragment">離散化＋線段樹＋掃描線</p>
+                        <p class="fragment">具體細節不太重要，學會這個要數月至數年的修煉</p>
+                    </section>
+                    <section>
+                        <h3>這是 ACM-ICPC World Final 的考古題</h3>
+                        <p>聽學長說解這題的隊伍一隻手數得出來。</p>
+                    </section>
+				</section>
+
+                <section>
+					<section>
+						<h2>H 湊鬼牌</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>給一張圖，圖上每一條邊都要選擇其中一個端點 +1。</p>
+                        <p>問奇數點最少能有幾個？</p>
+                    </section>
+                     <section>
+                        <h1>定義名詞</h1>
+                    </section>
+                    <section>
+                        <h1>連通塊</h1>
+                        <p>一個任兩點間都有路徑的最大子圖</p>
+                        <p>（不能再加入任何點或邊擴展）</p>
+                    </section>
+                    <section>
+                        <h2>解法</h2>
+                        <p class="fragment">統計所有連通塊的邊數量</p>
+                        <p class="fragment">奇數條邊的塊數就是答案</p>
+                        <small class="fragment">what....?</small>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：非常數學的結論題！</p>
+                    </section>
+                    <section>
+                        <h1>證明</h1>
+                        <p>請看白板</p>
+                    </section>
+				</section>
+
+                <section>
+					<section>
+						<h2>I 誰能比我短</h2>
+					</section>
+                     <section>
+                        <h2>題目大意</h2>
+                        <p>給一個字符集和一個由該字符集構成的序列</p>
+                        <p>問包含所有字符的最小子區間有多長</p>
+                    </section>
+                    <section>
+                        <h2>觀察一</h2>
+                        <p>對於一個包含所有字符的區間 $[L,R]$</p>
+                        <p>對於所有 $L' < L$ 恆有 $[L',R]$ 也包含所有字符</p>
+                    </section>
+                    <section>
+                        <h2>觀察二</h2>
+                        <p>根據觀察一</p>
+                        <p>固定右界 $R$，我們都能得到一個最大的左界 $L$</p>
+                    </section>
+                    <section>
+                        <h2>觀察三</h2>
+                        <p>對於一個在 $R$ 右邊的新右界 $R'$ </p>
+                        <p>恆有 $R'$ 對應右界 $L'$ 使得 $L' \ge L$</p>
+                    </section>
+                    <section>
+                        <h2>結論</h2>
+                        <p>討論 $N$ 個所有可能右界</p>
+                        <p>過程中維護最大左界，逐步往右推</p>
+                    </section>
+                    <section>
+                        <h2>複雜度？</h2>
+                        <p>右界推 $N$ 次，左界最多推 $N$ 次，故 $O(N)$</p>
+                    </section>
+                    <section>
+                        <h2>實作</h2>
+                        <p class="fragment">開一個很大的陣列去記錄字符 $i$ 出現的次數</p>
+                        <p class="fragment">然後右界跟左界推一推</p>
+                        <p class="fragment">記錄左右界的這個做法叫做雙指針</p>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：時間複雜度的均攤分析。</p>
+                    </section>
+				</section>
+
+                <section>
+					<section>
+						<h2>J 屁孩與他的鳳梨酥</h2>
+					</section>
+                    <section>
+                        <h2>題目大意</h2>
+                        <p>給一個 0/1 矩陣，問上面有幾個由 $1$ 組成的正方形。</p>
+                    </section>
+                    <section>
+                        <h2>天真的做法</h2>
+                        <p class="fragment">枚舉左上角座標，$O(N^2)$。</p>
+                        <p class="fragment">枚舉邊長，$O(N)$。</p>
+                        <p class="fragment">掃過整個正方形，$O(N^2)$。
+                        <p class="fragment">完美的 $O(N^5)$。</p>
+                    </section>
+                    <section>
+                        <h2>排容原理</h2>
+                        <p>$O(1)$ 算出一個矩形的總和</p>
+                        <p>省去掃過整個正方形的時間，共 $O(N^3)$。</p>
+                    </section>
+                    <section>
+                        <h2>精美的做法</h2>
+                        <p class="fragment">動態規劃！</p>
+                    </section>
+                    <section>
+                        <p>$dp_{i,j} = min\{dp_{i-1,j-1}, dp_{i-1,j}, dp_{i,j-1}\} + 1$</p>
+                    </section>
+                    <section>
+                        <h1><font color="lime">Yes</font></h1>
+                        <p class="fragment">結論：有趣的思考題。</p>
+                    </section>
+				</section>
+
+                <section data-background="#dddddd">
+                    <h1>THE END</h1>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
